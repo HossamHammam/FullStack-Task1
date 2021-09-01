@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Blog = require('./models/blog');
 const { init } = require('./models/blog');
 const aws = require('aws-sdk');
-
+require("dotenv").config();
 let s3 = new aws.S3({
   dbURI: process.env.dbURI
 });
