@@ -28,24 +28,6 @@ app.use((req, res, next) => {
   res.locals.path = req.path;
   next();
 });
-//API
-var axios = require("axios").default;
-
-var options = {
-  method: 'GET',
-  url: 'https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/total',
-  params: {country: 'Canada'},
-  headers: {
-    'x-rapidapi-host': 'covid-19-coronavirus-statistics.p.rapidapi.com',
-    'x-rapidapi-key': '76cecf7d17msha3c3dc7ff3f8df6p115d0cjsn5de958d6c2e1'
-  }
-};
-let CT;
-axios.request(options).then(function (response) {
-	CT = response.data;
-}).catch(function (error) {
-	console.error(error);
-});
 // mongoose & mongo tests
 app.get('/add-blog', (req, res) => {
   const blog = new Blog({
@@ -96,9 +78,6 @@ app.get('/blogs/create', (req, res) => {
   res.render('create', { title: 'Create a new blog' });
 });
 
-app.get('/APi', (req, res) => {
-  res.render('APi', { title: 'APi' , CT : CT });
-});
 
 app.get('/blogs', (req, res) => {
   Blog.find().sort({ createdAt: -1 })
