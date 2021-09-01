@@ -96,8 +96,8 @@ app.get('/blogs/create', (req, res) => {
   res.render('create', { title: 'Create a new blog' });
 });
 
-app.get('/API', (req, res) => {
-  res.render('API', { title: 'API' , CT : CT});
+app.get('/APi', (req, res) => {
+  res.render('APi', { title: 'APi' , CT : CT });
 });
 
 app.get('/blogs', (req, res) => {
