@@ -11,7 +11,7 @@ let s3 = new aws.S3({
 // express app
 const app = express();
 // connect to mongodb & listen for requests
-
+dbURI = process.env.dbURI;
 mongoose.connect(dbURI,
   { useNewUrlParser: true, useUnifiedTopology: true })
    .then((result) => app.listen(process.env.PORT || 3000)).catch((err) => console.log(err));
