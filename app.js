@@ -3,12 +3,15 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const Blog = require('./models/blog');
 const { init } = require('./models/blog');
+const aws = require('aws-sdk');
 
+let s3 = new aws.S3({
+  dbURI: process.env.dbURI
+});
 // express app
 const app = express();
 // connect to mongodb & listen for requests
 
-const dbURI = "mongodb+srv://Hossam:test1234@project1.e0jwp.mongodb.net/Project1?retryWrites=true&w=majority";
 mongoose.connect(dbURI,
   { useNewUrlParser: true, useUnifiedTopology: true })
    .then((result) => app.listen(process.env.PORT || 3000)).catch((err) => console.log(err));
