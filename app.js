@@ -4,14 +4,15 @@ const mongoose = require('mongoose');
 const Blog = require('./models/blog');
 const { init } = require('./models/blog');
 const aws = require('aws-sdk');
-require("dotenv").config();
 let s3 = new aws.S3({
   dbURI: process.env.dbURI
 });
+require("dotenv").config();
 // express app
 const app = express();
 // connect to mongodb & listen for requests
 dbURI = process.env.dbURI;
+console.log(dbURI);
 mongoose.connect(dbURI,
   { useNewUrlParser: true, useUnifiedTopology: true })
    .then((result) => app.listen(process.env.PORT || 3000)).catch((err) => console.log(err));
