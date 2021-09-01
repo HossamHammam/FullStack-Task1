@@ -7,10 +7,11 @@ const { init } = require('./models/blog');
 // express app
 const app = express();
 // connect to mongodb & listen for requests
+
 const dbURI = "mongodb+srv://Hossam:test1234@project1.e0jwp.mongodb.net/Project1?retryWrites=true&w=majority";
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(result => app.listen(3000))
-  .catch(err => console.log(err));
+mongoose.connect(dbURI,
+  { useNewUrlParser: true, useUnifiedTopology: true })
+   .then((result) => app.listen(process.env.PORT || 3000)).catch((err) => console.log(err));
 
 // register view engine
 app.set('view engine', 'ejs');
